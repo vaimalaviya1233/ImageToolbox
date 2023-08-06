@@ -54,9 +54,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.size.Size
-import com.t8rin.compose_collage.CollageBox
-import com.t8rin.compose_collage.HollowModel
-import com.t8rin.compose_collage.PictureModel
 import com.t8rin.dynamic.theme.LocalDynamicThemeState
 import com.t8rin.dynamic.theme.getAppColorTuple
 import dev.olshevski.navigation.reimagined.hilt.hiltViewModel
@@ -76,7 +73,6 @@ import ru.tech.imageresizershrinker.presentation.root.widget.other.TopAppBarEmoj
 import ru.tech.imageresizershrinker.presentation.root.widget.text.Marquee
 import ru.tech.imageresizershrinker.presentation.root.widget.utils.LocalSettingsState
 import ru.tech.imageresizershrinker.presentation.root.widget.utils.isScrollingUp
-import kotlin.random.Random
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -302,25 +298,6 @@ fun ImagePreviewScreen(
                 }
             )
 
-            if (viewModel.bitmaps.isNotEmpty()) {
-                CollageBox(
-                    modifier = Modifier.fillMaxSize(0.7f),
-                    pictures = viewModel.bitmaps.map {
-                        PictureModel(
-                            it,
-                            HollowModel(
-                                0f,
-                                0f,
-                                Random.nextFloat() * 300f,
-                                Random.nextFloat() * 300f
-                            )
-                        )
-                    },
-                    onGetCollage = {
-
-                    }
-                )
-            }
             BackHandler { onGoBack() }
         }
     }

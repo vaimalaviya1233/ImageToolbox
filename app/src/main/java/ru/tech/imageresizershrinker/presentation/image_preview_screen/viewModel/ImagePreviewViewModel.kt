@@ -5,12 +5,9 @@ import android.net.Uri
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import ru.tech.imageresizershrinker.domain.image.ImageManager
 import ru.tech.imageresizershrinker.domain.model.ImageFormat
 import javax.inject.Inject
@@ -29,13 +26,6 @@ class ImagePreviewViewModel @Inject constructor(
     fun updateUris(uris: List<Uri>?) {
         _uris.value = null
         _uris.value = uris
-        val list = mutableListOf<Bitmap>()
-        viewModelScope.launch {
-            uris?.forEach {
-                imageManager.getImage(it)?.let { it1 -> list.add(it1) }
-            }
-            bitmaps = list
-        }
     }
 
     fun selectUri(uri: Uri?) {
@@ -61,8 +51,6 @@ class ImagePreviewViewModel @Inject constructor(
             onError = onError
         )
     }
-
-    var bitmaps: List<Bitmap> by mutableStateOf(listOf())
 
     suspend fun decodeSampledBitmapFromUri(
         uri: Uri,
