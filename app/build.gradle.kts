@@ -146,6 +146,7 @@ dependencies {
     implementation(project(":drawbox"))
     implementation(project(":avif-coder-coil"))
     implementation(project(":avif-coder"))
+    implementation(project(":compose_collage"))
 
     implementation("org.burnoutcrew.composereorderable:reorderable:0.9.6")
 

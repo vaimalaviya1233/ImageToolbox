@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":compose_collage")
+
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
