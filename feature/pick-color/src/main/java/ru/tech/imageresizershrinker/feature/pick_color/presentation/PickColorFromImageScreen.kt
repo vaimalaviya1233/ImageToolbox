@@ -74,11 +74,8 @@ import com.smarttoolfactory.colordetector.ImageColorDetector
 import com.smarttoolfactory.colordetector.parser.rememberColorParser
 import com.t8rin.dynamic.theme.LocalDynamicThemeState
 import dev.olshevski.navigation.reimagined.hilt.hiltViewModel
-import dev.olshevski.navigation.reimagined.navigate
-import dev.olshevski.navigation.reimagined.pop
 import kotlinx.coroutines.launch
 import ru.tech.imageresizershrinker.coreresources.R
-import ru.tech.imageresizershrinker.feature.pick_color.presentation.viewModel.PickColorViewModel
 import ru.tech.imageresizershrinker.coreui.icons.material.PaletteSwatch
 import ru.tech.imageresizershrinker.coreui.theme.outlineVariant
 import ru.tech.imageresizershrinker.coreui.utils.helper.ContextUtils.copyToClipboard
@@ -105,6 +102,7 @@ import ru.tech.imageresizershrinker.coreui.widget.other.showError
 import ru.tech.imageresizershrinker.coreui.widget.text.Marquee
 import ru.tech.imageresizershrinker.coreui.widget.utils.LocalSettingsState
 import ru.tech.imageresizershrinker.coreui.widget.utils.LocalWindowSizeClass
+import ru.tech.imageresizershrinker.feature.pick_color.presentation.viewModel.PickColorViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -366,7 +364,7 @@ fun PickColorFromImageScreen(
                                                         contentColor = LocalContentColor.current,
                                                         enableAutoShadowAndBorder = false,
                                                         onClick = {
-                                                            if (navController.backstack.entries.isNotEmpty()) navController.pop()
+                                                            navController.pop()
                                                             navController.navigate(
                                                                 Screen.GeneratePalette(
                                                                     viewModel.uri
@@ -392,7 +390,7 @@ fun PickColorFromImageScreen(
                                             contentColor = LocalContentColor.current,
                                             enableAutoShadowAndBorder = false,
                                             onClick = {
-                                                if (navController.backstack.entries.isNotEmpty()) navController.pop()
+                                                navController.pop()
                                                 navController.navigate(
                                                     Screen.GeneratePalette(
                                                         viewModel.uri

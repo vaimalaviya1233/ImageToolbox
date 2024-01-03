@@ -1,5 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":feature:root")
+
+
+include(":feature:main")
+
+
 include(":feature:pick-color")
 
 

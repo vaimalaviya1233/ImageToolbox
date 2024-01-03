@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.core.net.toUri
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -396,8 +397,8 @@ class FilterViewModel @Inject constructor(
 
     fun setType(type: Screen.Filter.Type) {
         when (type) {
-            is Screen.Filter.Type.Basic -> setBasicFilter(type.uris)
-            is Screen.Filter.Type.Masking -> setMaskFilter(type.uri)
+            is Screen.Filter.Type.Basic -> setBasicFilter(type.uris?.map { it.toUri() })
+            is Screen.Filter.Type.Masking -> setMaskFilter(type.uri?.toUri())
         }
     }
 

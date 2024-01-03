@@ -58,8 +58,6 @@ import ru.tech.imageresizershrinker.coredomain.model.Preset
 import ru.tech.imageresizershrinker.coreui.icons.material.CreateAlt
 import ru.tech.imageresizershrinker.coreui.icons.material.Telegram
 import ru.tech.imageresizershrinker.coreui.theme.outlineVariant
-import ru.tech.imageresizershrinker.coreui.utils.navigation.LocalNavController
-import ru.tech.imageresizershrinker.coreui.utils.navigation.Screen
 import ru.tech.imageresizershrinker.coreui.widget.modifier.alertDialogBorder
 import ru.tech.imageresizershrinker.coreui.widget.modifier.container
 import ru.tech.imageresizershrinker.coreui.widget.modifier.fadingEdges
@@ -76,13 +74,12 @@ fun PresetWidget(
     selectedPreset: Preset,
     includeTelegramOption: Boolean,
     showWarning: Boolean = false,
+    isBytesResize: Boolean = false,
     onPresetSelected: (Preset) -> Unit
 ) {
     val settingsState = LocalSettingsState.current
     val editPresetsState = LocalEditPresetsState.current
     val data = settingsState.presets
-
-    val screen = LocalNavController.current.backstack.entries.last().destination
 
     val state = rememberRevealState()
     val scope = rememberCoroutineScope()
@@ -229,7 +226,7 @@ fun PresetWidget(
                 )
             },
             text = {
-                if (screen !is Screen.ResizeByBytes) Text(stringResource(R.string.presets_sub))
+                if (isBytesResize) Text(stringResource(R.string.presets_sub))
                 else Text(stringResource(R.string.presets_sub_bytes))
             }
         )

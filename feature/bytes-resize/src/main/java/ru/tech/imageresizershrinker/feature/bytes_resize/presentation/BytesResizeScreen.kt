@@ -440,7 +440,8 @@ fun BytesResizeScreen(
                                                     Preset.Numeric(it)
                                                 },
                                                 includeTelegramOption = false,
-                                                onPresetSelected = viewModel::selectPreset
+                                                onPresetSelected = viewModel::selectPreset,
+                                                isBytesResize = true
                                             )
                                         }
                                     }

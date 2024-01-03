@@ -296,7 +296,7 @@ fun GeneratePaletteScreen(
                             contentColor = LocalContentColor.current,
                             enableAutoShadowAndBorder = false,
                             onClick = {
-                                if (navController.backstack.entries.isNotEmpty()) navController.pop()
+                                navController.pop()
                                 navController.navigate(Screen.PickColorFromImage(viewModel.uri))
                             }
                         ) {

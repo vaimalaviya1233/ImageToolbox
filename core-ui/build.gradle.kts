@@ -3,7 +3,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-    id("kotlin-parcelize")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -28,7 +28,6 @@ android {
     }
 
     buildFeatures {
-        buildConfig = true
         compose = true
     }
 
@@ -121,5 +120,5 @@ dependencies {
     "marketImplementation"(libs.app.update)
     "marketImplementation"(libs.app.update.ktx)
 
-    api(project(":core-resources"))
+    implementation(project(":core-resources"))
 }

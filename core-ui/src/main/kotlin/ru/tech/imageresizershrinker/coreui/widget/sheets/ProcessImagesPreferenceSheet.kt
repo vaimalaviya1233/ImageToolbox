@@ -30,11 +30,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.olshevski.navigation.reimagined.NavController
-import dev.olshevski.navigation.reimagined.navigate
 import ru.tech.imageresizershrinker.coreresources.R
 import ru.tech.imageresizershrinker.coreui.theme.White
 import ru.tech.imageresizershrinker.coreui.utils.navigation.LocalNavController
+import ru.tech.imageresizershrinker.coreui.utils.navigation.NavController
 import ru.tech.imageresizershrinker.coreui.utils.navigation.Screen
 import ru.tech.imageresizershrinker.coreui.widget.controls.EnhancedButton
 import ru.tech.imageresizershrinker.coreui.widget.image.Picture
@@ -66,7 +65,7 @@ fun ProcessImagesPreferenceSheet(
     uris: List<Uri>,
     hasPdf: Boolean = false,
     visible: MutableState<Boolean>,
-    navController: NavController<Screen> = LocalNavController.current,
+    navController: NavController = LocalNavController.current,
     navigate: (Screen) -> Unit = { screen ->
         navController.apply {
             this.navigate(screen)

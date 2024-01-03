@@ -70,7 +70,6 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.t8rin.dynamic.theme.LocalDynamicThemeState
-import dev.olshevski.navigation.reimagined.hilt.hiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.tech.imageresizershrinker.coreresources.R
@@ -113,14 +112,14 @@ import ru.tech.imageresizershrinker.feature.single_edit.presentation.components.
 import ru.tech.imageresizershrinker.coreui.widget.sheets.EditExifSheet
 import ru.tech.imageresizershrinker.feature.single_edit.presentation.components.EraseBackgroundEditOption
 import ru.tech.imageresizershrinker.feature.single_edit.presentation.components.FilterEditOption
-import ru.tech.imageresizershrinker.feature.single_edit.presentation.viewModel.SingleEditViewModel
+import ru.tech.imageresizershrinker.feature.single_edit.presentation.viewModel.SingleEditComponent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SingleEditScreen(
     uriState: Uri?,
     onGoBack: () -> Unit,
-    viewModel: SingleEditViewModel = hiltViewModel(),
+    viewModel: SingleEditComponent
 ) {
     val settingsState = LocalSettingsState.current
     val toastHostState = LocalToastHost.current

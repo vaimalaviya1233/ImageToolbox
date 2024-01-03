@@ -6,6 +6,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.core.net.toUri
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -104,9 +105,9 @@ class PdfToolsViewModel @Inject constructor(
 
     fun setType(type: Screen.PdfTools.Type) {
         when (type) {
-            is Screen.PdfTools.Type.ImagesToPdf -> setImagesToPdf(type.imageUris)
-            is Screen.PdfTools.Type.PdfToImages -> setPdfToImagesUri(type.pdfUri)
-            is Screen.PdfTools.Type.Preview -> setPdfPreview(type.pdfUri)
+            is Screen.PdfTools.Type.ImagesToPdf -> setImagesToPdf(type.imageUris?.map { it.toUri() })
+            is Screen.PdfTools.Type.PdfToImages -> setPdfToImagesUri(type.pdfUri?.toUri())
+            is Screen.PdfTools.Type.Preview -> setPdfPreview(type.pdfUri?.toUri())
         }
         resetCalculatedData()
     }
